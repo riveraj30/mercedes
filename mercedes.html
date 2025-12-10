@@ -1,0 +1,146 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Assignment 10</title>
+<link href="https://fonts.googleapis.com/css2?family=Cherry+Bomb+One&family=Cherry+Swash:wght@400;700&family=Dancing+Script:wght@400..700&family=Libre+Baskerville:ital,wght@0,400..700;1,400..700&family=Pinyon+Script&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Swanky+and+Moo+Moo&family=Unbounded:wght@200..900&display=swap" rel="stylesheet">
+<style>
+body {
+    background-color: aquamarine;
+    margin: 0;
+    padding: 0;
+}
+
+#bg {
+    width: 800px;
+    height: 250px;
+    margin: 0 auto;
+    background: url("track.png");
+    overflow: hidden;
+}
+
+#mercedes {
+    width: 211px;
+    height: 116px;
+    position: relative;
+    top: 60px;
+    left: 10px;
+    animation-name: letsgo;
+    animation-duration: 1.5s;
+    animation-fill-mode: forwards;
+    animation-play-state: paused;
+}
+
+#buttons {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 10px;
+}
+
+button {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#drivers {
+    display: flex;
+    justify-content: space-between;
+    width: 800px;
+    margin: 20px auto;
+    gap: 10px;
+}
+
+.driver-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+}
+
+.driver {
+    width: 100%;
+    max-width: 380px;
+    height: auto;
+    border-radius: 10px;
+    border: 2px solid black;
+}
+
+.driver-name {
+    margin-top: 5px;
+    font-family: 'Unbounded', sans-serif;
+    font-size: 18px;
+    text-align: center;
+}
+
+#driver-info p {
+    font-family:'Unbounded', sans-serif;
+    font-size: 25px;
+    color: black;
+    line-height: 1.5;
+    text-align: center;
+    max-width: 800px;
+    margin: 20px auto;
+}
+
+@keyframes letsgo {
+    0%   { transform: translateX(0) rotate(0deg); }
+    20%  { transform: translateX(0) rotate(-15deg); }
+    35%  { transform: translateX(0) rotate(0deg); }
+    100% { transform: translateX(700px); }
+}
+</style>
+</head>
+
+<body>
+<div id="bg">
+    <div id="buttons">
+        <button style="background: lightgreen;" id="startBtn">Start</button>
+        <button style="background: yellow;" id="pauseBtn">Pause</button>
+        <button style="background: red;" id="rewindBtn">Rewind</button>
+    </div>
+    <img id="mercedes" src="mercedes.png" />
+</div>
+
+<div id="drivers">
+    <div class="driver-container">
+        <img src="russell.jpg" alt="George Russell" class="driver">
+        <p class="driver-name">George Russell</p>
+    </div>
+    <div class="driver-container">
+        <img src="antonelli.jpg" alt="Kimi Antonelli" class="driver">
+        <p class="driver-name">Kimi Antonelli</p>
+    </div>
+</div>
+
+<div id="driver-info">
+    <p>
+        Mercedes-AMG Petronas Formula One Team is a top Formula 1 team competing in the FIA Formula 1 World Championship. The team has won multiple Constructors' Championships and is known for its high-performing cars. The current drivers are George Russell and Kimi Antonelli, who race together to score points for the team and achieve podium finishes in every Grand Prix.
+    </p>
+</div>
+
+<script>
+const mercedes = document.getElementById('mercedes');
+
+document.getElementById('startBtn').onclick = function () {
+    mercedes.style.animationPlayState = 'running';
+};
+
+document.getElementById('pauseBtn').onclick = function () {
+    mercedes.style.animationPlayState = 'paused';
+};
+
+document.getElementById('rewindBtn').onclick = function () {
+    mercedes.style.animation = 'none';
+    void mercedes.offsetWidth;
+    mercedes.style.animation = 'letsgo 1.5s forwards';
+    mercedes.style.animationPlayState = 'paused';
+};
+</script>
+</body>
+</html>
